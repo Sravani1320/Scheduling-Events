@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "809176224245",
+    "project_id": "cegepapplication",
+    "storage_bucket": "cegepapplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809176224245:android:d99ceaf6be67e62681d0bc",
+        "android_client_info": {
+          "package_name": "com.example.cegepapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809176224245-evss2vnsuliremcs5q0tnq0f2s82lu8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-qmCuOXgyQMh0Yn3fueLq-fCI4X8ZvO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809176224245-evss2vnsuliremcs5q0tnq0f2s82lu8p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
