@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".StudentLoginActivity"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:src="@drawable/seminar"
+
+        android:layout_marginTop="0px"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Scheduling Events"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#FFC947"/>
+
+
+
+
+    <Button
+        android:id="@+id/btnstudentlogin"
+        android:layout_width="250dp"
+        android:backgroundTint="#FFC947"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="Student"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#fff"
+
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnteacherlogin"
+        android:layout_width="250dp"
+        android:backgroundTint="#FFC947"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="Teacher"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#fff"
+
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnadminlogin"
+        android:layout_width="250dp"
+        android:backgroundTint="#FFC947"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="Admin"
+
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#fff"
+
+        android:layout_marginTop="20dp"/>
+
+
+
+
+</LinearLayout>

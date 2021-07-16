@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminLoginActivity"
+    tools:context=".StudentRegistrationActivity"
     android:orientation="vertical"
     android:layout_margin="20dp"
     android:gravity="center"
@@ -15,7 +15,7 @@
         android:layout_height="300px"
         android:src="@drawable/seminar"
 
-        android:layout_marginTop="0px"/>
+        android:layout_marginTop="50px"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Admin Login"
+        android:text="Add Student"
         android:textSize="30dp"
 
         android:gravity="center"
@@ -38,8 +38,20 @@
         android:textStyle="bold"
         android:textColor="#000"/>
 
+
     <EditText
-        android:id="@+id/etadminemail"
+        android:id="@+id/etname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Full Name"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:focusedByDefault="true"
+        />
+
+
+    <EditText
+        android:id="@+id/etemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Email"
@@ -48,8 +60,21 @@
         android:focusedByDefault="true"
         />
 
+
     <EditText
-        android:id="@+id/etadminpass"
+        android:id="@+id/etphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone Number"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:focusedByDefault="true"
+        />
+
+
+
+    <EditText
+        android:id="@+id/etpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Password"
@@ -58,17 +83,16 @@
         />
 
     <Button
-        android:id="@+id/btnadminlogin"
-        android:layout_width="350px"
-        android:backgroundTint="#FFC947"
+        android:id="@+id/btnregister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Login"
+        android:text="Register"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="#fff"
-
         android:layout_marginTop="20dp"/>
+
 
 
 
