@@ -1,5 +1,8 @@
 package com.eventsapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -18,9 +21,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.eventsapp.api.ApiService;
 import com.eventsapp.model.ResponseData;

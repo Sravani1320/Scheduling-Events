@@ -1,5 +1,7 @@
 package com.eventsapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,8 +10,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.eventsapp.adapters.AdminViewEventsAdapter;
 import com.eventsapp.adapters.StudentMyEventAdapter;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;

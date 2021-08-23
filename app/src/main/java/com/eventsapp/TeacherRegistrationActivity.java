@@ -16,6 +16,9 @@ import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.ResponseData;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +40,11 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etname.getText().toString().isEmpty()){
+                if((etpass.getText().toString().isEmpty())){
+                    Toast.makeText(getApplicationContext(), "Password not empty", Toast.LENGTH_SHORT).show();
+                   // return;
+                }
+                else if(etname.getText().toString().isEmpty()){
                     Toast.makeText(TeacherRegistrationActivity.this, "Enter Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -45,46 +52,58 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
                     Toast.makeText(TeacherRegistrationActivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                else if(etphone.getText().toString().isEmpty()){
-                    Toast.makeText(TeacherRegistrationActivity.this, "Enter Phone", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                else if(etpass.getText().toString().isEmpty()){
-                    Toast.makeText(TeacherRegistrationActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                else if(etphone.getText().toString().isEmpty() || etphone.length()<10){
+                    Toast.makeText(TeacherRegistrationActivity.this, "Enter Phone or Invalid Phone format", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else {
-                    progress = new ProgressDialog(TeacherRegistrationActivity.this);
-                    progress.setMessage("Adding please wait");
-                    progress.show();
-                    ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-                    Call<ResponseData> call = service.teacheradd(etname.getText().toString(),etemail.getText().toString(),etphone.getText().toString(),etpass.getText().toString());
-                    call.enqueue(new Callback<ResponseData>() {
-                        @Override
-                        public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
-                            progress.dismiss();
-                            if (response.body().status.equals("true")) {
-                                Toast.makeText(TeacherRegistrationActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(TeacherRegistrationActivity.this, AdminHomeActivity.class);
-                                startActivity(intent);
-                                finish();
+                        if (isValidPassword(etpass.getText().toString())) {
+                            progress = new ProgressDialog(TeacherRegistrationActivity.this);
+                            progress.setMessage("Adding please wait");
+                            progress.show();
+                            ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
+                            Call<ResponseData> call = service.teacheradd(etname.getText().toString(),etemail.getText().toString(),etpass.getText().toString(),etphone.getText().toString());
+                            call.enqueue(new Callback<ResponseData>() {
+                                @Override
+                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    progress.dismiss();
+                                    if (response.body().status.equals("true")) {
+                                        Toast.makeText(TeacherRegistrationActivity.this, response.body().message, Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(TeacherRegistrationActivity.this, AdminHomeActivity.class);
+                                        startActivity(intent);
 
-                            } else {
-                                Toast.makeText(TeacherRegistrationActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-                            }
+                                    } else {
+                                        Toast.makeText(TeacherRegistrationActivity.this, response.body().message, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<ResponseData> call, Throwable t) {
+                                    progress.dismiss();
+                                    Toast.makeText(TeacherRegistrationActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "Password must contain 8 letters and special character", Toast.LENGTH_SHORT).show();
+
                         }
-                        @Override
-                        public void onFailure(Call<ResponseData> call, Throwable t) {
-                            progress.dismiss();
-                            Toast.makeText(TeacherRegistrationActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+
                 }
             }
         });
 
     }
 
+
+    public boolean isValidPassword(final String password){
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+    }
 
 
     @Override

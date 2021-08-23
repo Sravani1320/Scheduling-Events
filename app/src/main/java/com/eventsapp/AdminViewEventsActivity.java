@@ -1,16 +1,17 @@
 package com.eventsapp;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.eventsapp.adapters.AdminViewEventsAdapter;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.EventsPojo;
+import com.eventsapp.model.ResponseData;
 
 import java.util.ArrayList;
 import java.util.List;

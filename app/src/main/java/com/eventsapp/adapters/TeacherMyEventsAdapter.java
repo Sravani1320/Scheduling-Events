@@ -11,41 +11,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.eventsapp.AdminEditStudentActivity;
-import com.eventsapp.AdminHomeActivity;
+import com.bumptech.glide.Glide;
 import com.eventsapp.EditEventActivity;
 import com.eventsapp.R;
+import com.eventsapp.StudentHomeActivity;
 import com.eventsapp.TeacherHomeActivity;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
+import com.eventsapp.model.EventsPojo;
 import com.eventsapp.model.ResponseData;
-import com.eventsapp.model.StudentPojo;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StudentsAdapter extends BaseAdapter {
-    List<StudentPojo> student,search;
+public class TeacherMyEventsAdapter extends BaseAdapter {
+    List<EventsPojo> event;
     Context con;
+    String url= "http://paytracker.ca/events/";
     ProgressDialog progressDialog;
 
-    public StudentsAdapter(List<StudentPojo> student, Context con) {
-
-        this.student = student;
+    public TeacherMyEventsAdapter(List<EventsPojo> event, Context con) {
+        this.event = event;
         this.con = con;
-        this.search=student;
-        this.student = new ArrayList<StudentPojo>();
-        this.student.addAll(student);
     }
 
     @Override
     public int getCount() {
-        return student.size();
+        return event.size();
     }
 
     @Override
@@ -61,34 +56,39 @@ public class StudentsAdapter extends BaseAdapter {
     @Override
     public View getView(final int pos, View view, ViewGroup viewGroup) {
         LayoutInflater obj = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View students = obj.inflate(R.layout.child_students, null);
+        View events = obj.inflate(R.layout.student_myevent, null);
 
-        TextView tvname = (TextView) students.findViewById(R.id.tvname);
-        tvname.setText(student.get(pos).getName());
+        ImageView image=(ImageView)events.findViewById(R.id.image);
+        Glide.with(con).load(url+event.get(pos).getImage()).into(image);
 
-        ImageView editstudent = (ImageView) students.findViewById(R.id.editstudent);
-        editstudent.setOnClickListener(new View.OnClickListener() {
+        TextView tveventname = (TextView) events.findViewById(R.id.tveventname);
+        tveventname.setText(event.get(pos).getName());
+
+        ImageView imgedit = (ImageView) events.findViewById(R.id.imgedit);
+        imgedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(con, AdminEditStudentActivity.class);
-                intent.putExtra("sid",student.get(pos).getSid());
-                intent.putExtra("name",student.get(pos).getName());
-                intent.putExtra("email",student.get(pos).getEmail());
-                intent.putExtra("phone",student.get(pos).getPhone());
-                intent.putExtra("pass",student.get(pos).getPass());
+                Intent intent=new Intent(con, EditEventActivity.class);
+                intent.putExtra("eid",event.get(pos).getEid());
+                intent.putExtra("category",event.get(pos).getCategory());
+                intent.putExtra("name",event.get(pos).getName());
+                intent.putExtra("dat",event.get(pos).getDat());
+                intent.putExtra("venue",event.get(pos).getVenue());
+                intent.putExtra("description",event.get(pos).getDescription());
+                intent.putExtra("image",event.get(pos).getImage());
                 con.startActivity(intent);
             }
         });
 
-        ImageView deletestudent = (ImageView) students.findViewById(R.id.deletestudent);
-        deletestudent.setOnClickListener(new View.OnClickListener() {
+        ImageView imgdelete = (ImageView) events.findViewById(R.id.imgdelete);
+        imgdelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressDialog = new ProgressDialog(con);
                 progressDialog.setMessage("Deleting Data");
                 progressDialog.show();
                 ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
-                Call<ResponseData> call = service.deletestudent(student.get(pos).getSid());
+                Call<ResponseData> call = service.deleteevent(event.get(pos).getEid());
                 call.enqueue(new Callback<ResponseData>() {
                     @Override
                     public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -96,7 +96,7 @@ public class StudentsAdapter extends BaseAdapter {
                         if(response.body()==null){
                             Toast.makeText(con,"Server issue",Toast.LENGTH_SHORT).show();
                         }else {
-                            Intent intent=new Intent(con, AdminHomeActivity.class);
+                            Intent intent=new Intent(con, TeacherHomeActivity.class);
                             con.startActivity(intent);
                             Toast.makeText(con," Deleted successfully",Toast.LENGTH_SHORT).show();
                         }
@@ -110,24 +110,7 @@ public class StudentsAdapter extends BaseAdapter {
             }
         });
 
-        return students;
-    }
-
-
-    public void searchStudent(String charText)
-    {
-        charText = charText.toLowerCase(Locale.getDefault());
-        student.clear();
-        if (charText.length() == 0) {
-            student.addAll(search);
-        } else {
-            for (StudentPojo s : search) {
-                if (s.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    student.add(s);
-                }
-            }
-        }
-        notifyDataSetChanged();
+        return events;
     }
 
 }

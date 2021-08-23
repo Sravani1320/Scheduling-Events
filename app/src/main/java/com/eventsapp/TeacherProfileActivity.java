@@ -1,5 +1,8 @@
 package com.eventsapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.ResponseData;
+import com.eventsapp.model.StudentPojo;
 import com.eventsapp.model.TeacherPojo;
 
 import java.util.List;
