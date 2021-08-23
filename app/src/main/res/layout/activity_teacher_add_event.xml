@@ -4,25 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminEditStudentActivity"
+    tools:context=".TeacherAddEventActivity"
     android:orientation="vertical"
     android:layout_margin="20dp"
-    android:gravity="center"
     android:layout_gravity="center">
-
-    <ImageView
-        android:layout_width="300px"
-        android:layout_height="300px"
-        android:src="@drawable/seminar"
-
-        android:layout_marginTop="0px"/>
-
-
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Student Profile"
+        android:text="Add Event"
         android:textSize="30dp"
 
         android:gravity="center"
@@ -32,11 +22,21 @@
 
 
     <EditText
+        android:id="@+id/etcat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Event Category"
+        android:layout_marginTop="20dp"
+        android:inputType="text"
+        android:focusedByDefault="true"
+        />
 
+
+    <EditText
         android:id="@+id/etname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Full Name"
+        android:hint="Enter Event Name"
         android:layout_marginTop="20dp"
         android:inputType="text"
         android:focusedByDefault="true"
@@ -44,25 +44,10 @@
 
 
     <EditText
-        android:editable="false"
-        android:clickable="false"
-        android:focusable="false"
-        android:id="@+id/etemail"
+        android:id="@+id/etdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Email"
-        android:layout_marginTop="20dp"
-        android:inputType="text"
-        android:focusedByDefault="true"
-        />
-
-
-    <EditText
-
-        android:id="@+id/etphone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Phone Number"
+        android:hint="Enter Event Date"
         android:layout_marginTop="20dp"
         android:inputType="text"
         android:focusedByDefault="true"
@@ -71,22 +56,44 @@
 
 
     <EditText
-
-        android:id="@+id/etpass"
+        android:id="@+id/etvenue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Password"
+        android:hint="Enter Venue"
         android:layout_marginTop="20dp"
-        android:inputType="textPassword"
         />
+
+
+    <EditText
+        android:id="@+id/etdes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Description"
+        android:lines="3"
+        android:layout_marginTop="20dp"
+        android:inputType="textMultiLine"
+        />
+
 
     <Button
-        android:visibility="visible"
-        android:id="@+id/btnupdatestudent"
+        android:id="@+id/btnimageupload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="update"
+        android:layout_gravity="right"
+        android:text="Image Upload"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:textColor="#fff"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_gravity="center"
+        android:text="Add Event"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="#fff"

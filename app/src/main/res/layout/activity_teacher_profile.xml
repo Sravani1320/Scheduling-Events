@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminEditStudentActivity"
+    tools:context=".TeacherProfileActivity"
     android:orientation="vertical"
     android:layout_margin="20dp"
     android:gravity="center"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Student Profile"
+        android:text="My Profile"
         android:textSize="30dp"
 
         android:gravity="center"
@@ -81,8 +81,8 @@
         />
 
     <Button
-        android:visibility="visible"
-        android:id="@+id/btnupdatestudent"
+        android:visibility="gone"
+        android:id="@+id/btnupdateteacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"

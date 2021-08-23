@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">EventsApp</string>
+    <string name="app_name">Events App</string>
+    <string name="read_file">This app needs access to your file storage so that it can read photos.</string>
+    <string name="Open">Open navigation drawer</string>
+    <string name="Close">Close navigation drawer</string>
+
 </resources>

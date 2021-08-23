@@ -36,6 +36,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'pub.devrel:easypermissions:0.2.0'//image upload
     // For Card view
     implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation 'junit:junit:4.+'

@@ -43,22 +43,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Email"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:inputType="text"
         android:focusedByDefault="true"
         />
 
-    <EditText
-        android:id="@+id/etpass"
+<!--    <EditText-->
+<!--        android:id="@+id/etpass"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Enter Password"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:inputType="textPassword"-->
+<!--        />-->
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tv_pwd"
+        style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Password"
-        android:layout_marginTop="20dp"
-        android:inputType="textPassword"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="10dp"
+        android:hint="Password"
+        android:textColorHint="#000000"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
-        android:id="@+id/btnlogin"
+        android:id="@+id/btnteacherlogin"
         android:layout_width="350px"
         android:backgroundTint="#FFC947"
         android:layout_height="wrap_content"
@@ -74,11 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="or"
+        android:visibility="gone"
         android:textAllCaps="true"
         android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tvforgotpass"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgot Password"
