@@ -16,7 +16,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.EventsApp">
-        <activity android:name=".UpComingEventsActivity"></activity>
+        <activity android:name=".TeacherForgotPasswordActivity"></activity>
+        <activity android:name=".StudentForgotPasswordActivity" />
+        <activity android:name=".EditCommentActivity" />
+        <activity android:name=".TeacherEditEventActivity" />
+        <activity android:name=".UpComingEventsActivity" />
         <activity android:name=".AdminCommentsViewActivity" />
         <activity android:name=".EventPaticipantsActivity" />
         <activity android:name=".CommentEventActivity" />

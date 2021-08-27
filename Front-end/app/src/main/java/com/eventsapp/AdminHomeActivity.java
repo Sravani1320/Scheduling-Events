@@ -7,15 +7,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class AdminHomeActivity extends AppCompatActivity {
+public class AdminHomeActivity extends BaseActivity {
 
     CardView cdevents,cdstudents,cdteachers,cdcomments;
     Button btnlogout;
+    TextView tvEng,tvFr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+
+        tvEng = (TextView) findViewById(R.id.tvEng);
+        tvFr = (TextView) findViewById(R.id.tvFr);
+        tvEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("en");
+                restartActivity();
+            }
+        });
+        tvFr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("fr");
+                restartActivity();
+            }
+        });
 
         btnlogout=(Button)findViewById(R.id.btnlogout);
         btnlogout.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +79,11 @@ public class AdminHomeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
 
+    private void restartActivity() {
+        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
     }
 }

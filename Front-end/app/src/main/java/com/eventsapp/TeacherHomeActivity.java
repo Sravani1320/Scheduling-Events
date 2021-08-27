@@ -11,15 +11,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class TeacherHomeActivity extends AppCompatActivity {
+public class TeacherHomeActivity extends BaseActivity {
 
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private DrawerLayout dl;
     Button btnaddevent,btnviewevents;
+    TextView tvEng,tvFr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,23 @@ public class TeacherHomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(TeacherHomeActivity.this,ViewEventsActivity.class);
                 startActivity(i);
+            }
+        });
+
+        tvEng = (TextView) findViewById(R.id.tvEng);
+        tvFr = (TextView) findViewById(R.id.tvFr);
+        tvEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("en");
+                restartActivity();
+            }
+        });
+        tvFr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("fr");
+                restartActivity();
             }
         });
     }
@@ -107,6 +126,12 @@ public class TeacherHomeActivity extends AppCompatActivity {
             dl.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void restartActivity() {
+        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
     }
 
 }

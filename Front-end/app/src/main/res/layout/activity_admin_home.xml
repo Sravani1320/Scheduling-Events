@@ -7,7 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".AdminHomeActivity">
 
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:layout_gravity="right"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvEng"
+            android:text="English"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvFr"
+            android:text="French"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,7 +35,7 @@
         android:textColor="#000"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="Admin home"
+        android:text="@string/ahome"
         android:layout_margin="20dp"
         android:textStyle="bold" />
 
@@ -63,7 +81,7 @@
                     android:layout_marginTop="25dp"
                     android:textSize="30dp"
                     android:textColor="#fff"
-                    android:text="Events"
+                    android:text="@string/event"
                     android:textStyle="bold" />
 
 
@@ -115,7 +133,7 @@
                     android:layout_marginTop="25dp"
                     android:textSize="30dp"
                     android:textColor="#fff"
-                    android:text="Students"
+                    android:text="@string/student"
                     android:textStyle="bold" />
 
 
@@ -167,7 +185,7 @@
                     android:layout_marginTop="25dp"
                     android:textSize="30dp"
                     android:textColor="#fff"
-                    android:text="Teachers"
+                    android:text="@string/teacher"
                     android:textStyle="bold" />
 
 
@@ -219,15 +237,11 @@
                     android:layout_marginTop="25dp"
                     android:textSize="30dp"
                     android:textColor="#fff"
-                    android:text="Comments"
+                    android:text="@string/comment"
                     android:textStyle="bold" />
-
-
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
 
     </LinearLayout>
 
@@ -235,6 +249,6 @@
         android:id="@+id/btnlogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
+        android:text="@string/logout"
         android:layout_gravity="center"/>
 </LinearLayout>

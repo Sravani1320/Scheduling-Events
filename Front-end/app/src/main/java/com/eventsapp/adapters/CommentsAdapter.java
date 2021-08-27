@@ -3,6 +3,7 @@ package com.eventsapp.adapters;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,10 @@ import android.widget.Toast;
 
 import com.eventsapp.AdminEditStudentActivity;
 import com.eventsapp.AdminHomeActivity;
+import com.eventsapp.EditCommentActivity;
+import com.eventsapp.EditEventActivity;
 import com.eventsapp.R;
+import com.eventsapp.Utils;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.CommentsPojo;
@@ -30,6 +34,8 @@ public class CommentsAdapter extends BaseAdapter {
     List<CommentsPojo> comment, search;
     Context con;
     ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
+    String email;
 
     public CommentsAdapter(List<CommentsPojo> comment, Context con) {
         this.comment = comment;
@@ -56,12 +62,35 @@ public class CommentsAdapter extends BaseAdapter {
         LayoutInflater obj = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View c = obj.inflate(R.layout.child_comment, null);
 
+        sharedPreferences = con.getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
+        email = sharedPreferences.getString("user_name", "def-val");
+
+
         TextView tvname = (TextView) c.findViewById(R.id.tvname);
         tvname.setText(comment.get(pos).getName());
 
         TextView tvmsg = (TextView) c.findViewById(R.id.tvmsg);
         tvmsg.setText(comment.get(pos).getMsg());
 
+
+        ImageView editcomment=(ImageView)c.findViewById(R.id.editcomment);
+
+        if(email.equals(comment.get(pos).getEmail()))
+        {
+            editcomment.setVisibility(View.VISIBLE);
+        }
+        editcomment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(con, EditCommentActivity.class);
+                intent.putExtra("cid",comment.get(pos).getCid());
+                intent.putExtra("name",comment.get(pos).getName());
+                intent.putExtra("email",comment.get(pos).getEmail());
+                intent.putExtra("msg",comment.get(pos).getMsg());
+
+                con.startActivity(intent);
+            }
+        });
 
 
         return c;

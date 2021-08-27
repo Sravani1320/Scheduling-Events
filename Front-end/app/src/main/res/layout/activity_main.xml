@@ -19,11 +19,34 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Scheduling Events"
+        android:text="@string/app_name"
+
         android:gravity="center"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="#FFC947"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:layout_gravity="right"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvEng"
+            android:text="English"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tvFr"
+            android:text="French"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 
@@ -34,7 +57,7 @@
         android:backgroundTint="#FFC947"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Student"
+        android:text="@string/student"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="#fff"
@@ -47,7 +70,7 @@
         android:backgroundTint="#FFC947"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Teacher"
+        android:text="@string/teacher"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="#fff"
@@ -60,12 +83,10 @@
         android:backgroundTint="#FFC947"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:text="Admin"
-
+        android:text="@string/admin"
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="#fff"
-
         android:layout_marginTop="20dp"/>
 
 

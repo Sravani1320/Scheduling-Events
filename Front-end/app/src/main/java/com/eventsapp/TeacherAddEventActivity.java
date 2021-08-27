@@ -51,7 +51,7 @@ public class TeacherAddEventActivity extends AppCompatActivity implements EasyPe
     ProgressDialog progress;
     int mYear, mMonth, mDay;
     String DAY, MONTH, YEAR;
-    private static final String TAG = StudentAddEventActivity.class.getSimpleName();
+    private static final String TAG = TeacherAddEventActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,7 +167,7 @@ public class TeacherAddEventActivity extends AppCompatActivity implements EasyPe
         map.put("description", etdes.getText().toString());
         map.put("email", email);
         map.put("dat", etdate.getText().toString());
-        Toast.makeText(TeacherAddEventActivity.this, email, Toast.LENGTH_LONG).show();
+      //  Toast.makeText(TeacherAddEventActivity.this, email, Toast.LENGTH_LONG).show();
 
         RequestBody mFile = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", file.getName(), mFile);

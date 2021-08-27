@@ -21,11 +21,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StudentLoginActivity extends AppCompatActivity {
+public class StudentLoginActivity extends BaseActivity {
     ProgressDialog progress;
     EditText etemail, etpass;
     Button btnstudentlogin;
     TextView tvforgotpass, tvsignup;
+    TextView tvEng,tvFr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,26 @@ public class StudentLoginActivity extends AppCompatActivity {
         tvforgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent s=new Intent(StudentLoginActivity.this,StudentForgotPasswordActivity.class);
+                startActivity(s);
 
+            }
+        });
+
+        tvEng = (TextView) findViewById(R.id.tvEng);
+        tvFr = (TextView) findViewById(R.id.tvFr);
+        tvEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("en");
+                restartActivity();
+            }
+        });
+        tvFr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("fr");
+                restartActivity();
             }
         });
        // tvsignup = findViewById(R.id.tvsignup);
@@ -61,8 +81,13 @@ public class StudentLoginActivity extends AppCompatActivity {
                     progress.setTitle("Please wait,Data is being submit...");
                     progress.show();
                     // api call code
+
+
                     ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
                     Call<ResponseData> call = apiService.studentlogin(etemail.getText().toString(),etpass.getText().toString());
+
+
+
                     call.enqueue(new Callback<ResponseData>() {
                         @Override
                         public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -71,6 +96,7 @@ public class StudentLoginActivity extends AppCompatActivity {
                                 SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor et = sharedPreferences.edit();
                                 et.putString("user_name", etemail.getText().toString());
+                                et.putString("type", "student");
                                 et.commit();
                                 startActivity(new Intent(StudentLoginActivity.this, StudentHomeActivity.class));
                                 finish();
@@ -87,7 +113,11 @@ public class StudentLoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-
+    private void restartActivity() {
+        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
     }
 }

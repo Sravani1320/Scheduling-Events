@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.eventsapp.adapters.StudentMyEventAdapter;
+import com.eventsapp.adapters.TeacherMyEventsAdapter;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.EventsPojo;
@@ -46,8 +47,11 @@ public class TeacherMyEventsActivity extends AppCompatActivity {
         loading.show();
         SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         String email = sharedPreferences.getString("user_name", "def-val");
+
         ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<EventsPojo>> call= apiService.getmystudentevents(email);
+
+
         call.enqueue(new Callback<List<EventsPojo>>() {
             @Override
             public void onResponse(Call<List<EventsPojo>> call, Response<List<EventsPojo>> response) {
@@ -57,7 +61,7 @@ public class TeacherMyEventsActivity extends AppCompatActivity {
                     Toast.makeText(TeacherMyEventsActivity.this, "No data found", Toast.LENGTH_SHORT).show();
                 } else {
                     eventsPojo = response.body();
-                    events_list.setAdapter(new StudentMyEventAdapter(eventsPojo, TeacherMyEventsActivity.this));
+                    events_list.setAdapter(new TeacherMyEventsAdapter(eventsPojo, TeacherMyEventsActivity.this));
                 }
             }
             @Override

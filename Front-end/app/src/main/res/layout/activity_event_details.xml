@@ -202,7 +202,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Join Event"
+                        android:text="@string/joinevent"
                         android:background="@drawable/buttontwo"
                         android:padding="10dp"
                         android:textColor="#000"
@@ -213,7 +213,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comment Event"
+                        android:text="@string/commentevent"
                         android:background="@drawable/buttontwo"
                         android:padding="10dp"
                         android:textColor="#000"
@@ -224,7 +224,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Share"
+                        android:text="@string/share"
                         android:background="@drawable/buttontwo"
                         android:padding="10dp"
                         android:textColor="#000"
@@ -251,10 +251,10 @@
                 <ListView
 
                     android:id="@+id/events_comments"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_margin="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
+                    android:layout_height="400dp"
+
                     />
 
 

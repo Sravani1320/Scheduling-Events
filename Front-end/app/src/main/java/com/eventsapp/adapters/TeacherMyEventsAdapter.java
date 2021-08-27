@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.eventsapp.EditEventActivity;
 import com.eventsapp.R;
 import com.eventsapp.StudentHomeActivity;
+import com.eventsapp.TeacherEditEventActivity;
 import com.eventsapp.TeacherHomeActivity;
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
@@ -68,7 +69,7 @@ public class TeacherMyEventsAdapter extends BaseAdapter {
         imgedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(con, EditEventActivity.class);
+                Intent intent=new Intent(con, TeacherEditEventActivity.class);
                 intent.putExtra("eid",event.get(pos).getEid());
                 intent.putExtra("category",event.get(pos).getCategory());
                 intent.putExtra("name",event.get(pos).getName());

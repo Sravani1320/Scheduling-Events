@@ -105,6 +105,7 @@ public class EventDetailsActivity extends AppCompatActivity {
 
                 ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
                 Call<ResponseData> call = service.joinevent(email,eid);
+
                 call.enqueue(new Callback<ResponseData>() {
                     @Override
                     public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {

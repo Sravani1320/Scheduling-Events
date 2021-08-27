@@ -66,8 +66,12 @@ public class StudentRegistrationActivity extends AppCompatActivity {
                         progress = new ProgressDialog(StudentRegistrationActivity.this);
                         progress.setMessage("Adding please wait");
                         progress.show();
+
+
                         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
                         Call<ResponseData> call = service.studentadd(etname.getText().toString(), etemail.getText().toString(), etpass.getText().toString(), etphone.getText().toString());
+
+
                         call.enqueue(new Callback<ResponseData>() {
                             @Override
                             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {

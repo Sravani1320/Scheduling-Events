@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">planification d evenements</string>
+    <string name="Open">Open navigation drawer</string>
+    <string name="Close">Close navigation drawer</string>
+    <string name="read_file">Cette application a besoin d\'accéder à votre stockage de fichiers pour pouvoir lire les photos.</string>
+    <string name="login_user_hint">ID e-mail</string>
+    <string name="login_password_hint">Mot de passe</string>
+    <string name="Login">Connexion Etudiant</string>
+    <string name="tLogin">professeur Connexion</string>
+    <string name="aLogin">administrateur Connexion</string>
+    <string name="bLogin">Connexion</string>
+    <string name="student">Etudiant</string>
+    <string name="teacher">professeur</string>
+    <string name="admin">administrateur</string>
+    <string name="event">Evenement</string>
+    <string name="logout">Se deconnecter</string>
+    <string name="comment">commentaires</string>
+    <string name="joinevent">Rejoindre levenement</string>
+    <string name="addevent">ajouter un evenement</string>
+    <string name="viewevent">voir levenement</string>
+    <string name="home">domicile</string>
+    <string name="myprofile">mon profil</string>
+    <string name="myevents">mes evenements</string>
+    <string name="upevents">evenements a venir</string>
+
+    <string name="addstudent">Ajouter un etudiant</string>
+    <string name="addteacher">Ajouter des enseignants</string>
+    <string name="register">Sinscrire</string>
+    <string name="image">Telechargement d images</string>
+    <string name="commentevent">Evenement de commentaire</string>
+    <string name="share">partager</string>
+    <string name="ahome">Accueil de ladministrateur</string>
+    <string name="update">Mettre a jour</string>
+    <string name="forgotpassword">Mot de passe oublie</string>
+
+
+</resources>

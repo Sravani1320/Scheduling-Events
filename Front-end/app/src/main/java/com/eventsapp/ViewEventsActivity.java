@@ -89,6 +89,7 @@ public class ViewEventsActivity extends AppCompatActivity {
         loading.show();
         ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<EventsPojo>> call= apiService.getadminevents();
+
         call.enqueue(new Callback<List<EventsPojo>>() {
             @Override
             public void onResponse(Call<List<EventsPojo>> call, Response<List<EventsPojo>> response) {

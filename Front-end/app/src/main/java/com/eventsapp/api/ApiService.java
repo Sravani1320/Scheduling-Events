@@ -71,6 +71,7 @@ public interface ApiService {
             @Query("pass") String pass);
 
 
+    //http://paytracker.ca/events/adminlogin.php
 
     @GET("/events/adminlogin.php?")
     Call<ResponseData> adminlogin(
@@ -139,6 +140,15 @@ public interface ApiService {
             @Query("email") String email,
             @Query("eid") String eid);
 
+    @GET("/events/updatecomment.php?")
+    Call<ResponseData> updatecomment(
+            @Query("name") String name,
+            @Query("msg") String msg,
+            @Query("email") String email,
+            @Query("cid") String cid);
+
+
+
     @GET("/events/joinevent.php?")
     Call<ResponseData> joinevent(
             @Query("email") String email,
@@ -164,5 +174,12 @@ public interface ApiService {
 
     @GET("/events/deletecomment.php")
     Call<ResponseData> deletecomment(@Query("id") String id);
+
+
+    @GET("/events/forgotPassword.php")
+    Call<ResponseData> forgotPassword(@Query("email") String email);
+
+    @GET("/events/tforgotPassword.php")
+    Call<ResponseData> tforgotPassword(@Query("email") String email);
 
 }

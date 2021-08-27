@@ -26,7 +26,7 @@ public class CommentEventActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     EditText etname,etmessage;
-    String useremail;
+    String useremail,usertype;
     TextView submit,eventname;
     ProgressDialog loading;
     @Override
@@ -40,6 +40,7 @@ public class CommentEventActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         useremail = sharedPreferences.getString("user_name", "def-val");
+        usertype = sharedPreferences.getString("type", "def-val");
         eventname=(TextView)findViewById(R.id.eventname);
         eventname.setText(getIntent().getStringExtra("name"));
         etname=(EditText) findViewById(R.id.etname);
@@ -73,10 +74,18 @@ public class CommentEventActivity extends AppCompatActivity {
                         public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                             loading.dismiss();
                             if (response.body().status.equals("true")) {
-                                Toast.makeText(CommentEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-//                                Intent intent=new Intent(CommentEventActivity.this, ViewEventsActivity.class);
-//                                startActivity(intent);
-                                finish();
+
+                                if(usertype.equals("student")) {
+                                    Toast.makeText(CommentEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(CommentEventActivity.this, StudentHomeActivity.class);
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Toast.makeText(CommentEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(CommentEventActivity.this, TeacherHomeActivity.class);
+                                    startActivity(intent);
+                                }
 
                             } else {
                                 Toast.makeText(CommentEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();

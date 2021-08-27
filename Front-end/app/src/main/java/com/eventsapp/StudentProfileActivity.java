@@ -49,8 +49,10 @@ public class StudentProfileActivity extends AppCompatActivity {
         progress.show();
         SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
         String email = sharedPreferences.getString("user_name", "def-val");
+
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<StudentPojo>> reg= service.studentprofile(email);
+
         reg.enqueue(new Callback<List<StudentPojo>>() {
             @Override
             public void onResponse(Call<List<StudentPojo>> call, Response<List<StudentPojo>> response) {

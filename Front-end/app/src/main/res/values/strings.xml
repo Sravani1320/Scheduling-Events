@@ -1,7 +1,41 @@
 <resources>
-    <string name="app_name">Events App</string>
+    <string name="app_name">Scheduling events</string>
     <string name="read_file">This app needs access to your file storage so that it can read photos.</string>
     <string name="Open">Open navigation drawer</string>
     <string name="Close">Close navigation drawer</string>
+    <string name="login_password_hint">Password</string>
+    <string name="Login">Student Login</string>
+    <string name="tLogin">Teacher Login</string>
+    <string name="aLogin">Admin Login</string>
+    <string name="bLogin">Login</string>
+    <string name="login_user_hint">EmailID</string>
+
+
+    <string name="event">Events</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="admin">Admin</string>
+
+    <string name="comment">Comments</string>
+
+    <string name="addevent">Add Event</string>
+    <string name="viewevent">View Events</string>
+    <string name="joinevent">Join event</string>
+    <string name="commentevent">Comment event</string>
+    <string name="share">Share</string>
+    <string name="home">Home</string>
+    <string name="myprofile">My Profile</string>
+    <string name="myevents">My Events</string>
+    <string name="upevents">Upcomming Events</string>
+    <string name="ahome">Admin Home</string>
+    <string name="image">Image Upload</string>
+    <string name="addstudent">Add Student</string>
+    <string name="addteacher">Add Teacher</string>
+    <string name="register">Register</string>
+
+    <string name="update">Update</string>
+    <string name="forgotpassword">Forgot Password</string>
+    <string name="logout">Logout</string>
+
 
 </resources>

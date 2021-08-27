@@ -21,11 +21,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TeacherLoginActivity extends AppCompatActivity {
+public class TeacherLoginActivity extends BaseActivity {
     ProgressDialog progress;
     EditText etemail, etpass;
     Button btnteacherlogin;
     TextView tvforgotpass, tvsignup;
+    TextView tvEng,tvFr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +35,27 @@ public class TeacherLoginActivity extends AppCompatActivity {
         etpass = findViewById(R.id.etpass);
         btnteacherlogin = findViewById(R.id.btnteacherlogin);
         tvforgotpass = findViewById(R.id.tvforgotpass);
+        tvEng = (TextView) findViewById(R.id.tvEng);
+        tvFr = (TextView) findViewById(R.id.tvFr);
+        tvEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("en");
+                restartActivity();
+            }
+        });
+        tvFr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("fr");
+                restartActivity();
+            }
+        });
         tvforgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent s=new Intent(TeacherLoginActivity.this,TeacherForgotPasswordActivity.class);
+                startActivity(s);
             }
         });
         // tvsignup = findViewById(R.id.tvsignup);
@@ -71,6 +89,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                                 SharedPreferences sharedPreferences = getSharedPreferences(Utils.SHREF, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor et = sharedPreferences.edit();
                                 et.putString("user_name", etemail.getText().toString());
+                                et.putString("type", "teacher");
                                 et.commit();
                                 startActivity(new Intent(TeacherLoginActivity.this, TeacherHomeActivity.class));
                                 finish();
@@ -87,7 +106,11 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-
+    private void restartActivity() {
+        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
     }
 }

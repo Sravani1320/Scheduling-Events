@@ -176,8 +176,13 @@ public class StudentAddEventActivity extends AppCompatActivity implements EasyPe
                 .baseUrl(SERVER_PATH)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+
         ApiService addevent = retrofit.create(ApiService.class);
         Call<ResponseData> fileUpload = addevent.addevent(fileToUpload, map);
+
+
+
         fileUpload.enqueue(new Callback<ResponseData>() {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {

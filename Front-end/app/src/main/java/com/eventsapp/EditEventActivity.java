@@ -2,18 +2,22 @@ package com.eventsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.eventsapp.api.ApiService;
 import com.eventsapp.api.RetroClient;
 import com.eventsapp.model.ResponseData;
+
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +32,9 @@ public class EditEventActivity extends AppCompatActivity {
     private Uri uri;
     Button btnadd,btnimageupload,btnupdateevent;
     ProgressDialog progress;
-    private static final String TAG = StudentAddEventActivity.class.getSimpleName();
+    int mYear, mMonth, mDay;
+    String DAY, MONTH, YEAR;
+    private static final String TAG = EditEventActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +46,14 @@ public class EditEventActivity extends AppCompatActivity {
         etvenue=(EditText)findViewById(R.id.etvenue);
         etdes=(EditText)findViewById(R.id.etdes);
 
+        etdate.setFocusable(false);
+        etdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                eventDate();
+            }
+        });
         etcat.setText(getIntent().getStringExtra("category"));
         etname.setText(getIntent().getStringExtra("name"));
         etdate.setText(getIntent().getStringExtra("dat"));
@@ -60,7 +73,7 @@ public class EditEventActivity extends AppCompatActivity {
                 String description=etdes.getText().toString();
 
                 progress = new ProgressDialog(EditEventActivity.this);
-                progress.setMessage("Adding please wait");
+                progress.setMessage("Updating please wait");
                 progress.show();
                 ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
                 Call<ResponseData> call = service.updateevent(id,category,name,dat,venue,description);
@@ -70,9 +83,9 @@ public class EditEventActivity extends AppCompatActivity {
                         progress.dismiss();
                         if (response.body().status.equals("true")) {
                             Toast.makeText(EditEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();
-//                            Intent intent = new Intent(EditEventActivity.this, StudentHomeActivity.class);
-//                            startActivity(intent);
-                            finish();
+                            Intent intent = new Intent(EditEventActivity.this, StudentHomeActivity.class);
+                            startActivity(intent);
+                          //  finish();
 
                         } else {
                             Toast.makeText(EditEventActivity.this, response.body().message, Toast.LENGTH_LONG).show();
@@ -86,5 +99,26 @@ public class EditEventActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+
+    public void eventDate() {
+
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(EditEventActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        DAY = dayOfMonth + "";
+                        MONTH = monthOfYear + 1 + "";
+                        YEAR = year + "";
+                        etdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        datePickerDialog.show();
     }
 }

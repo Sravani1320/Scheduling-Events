@@ -89,6 +89,8 @@ public class ManageStudentsActivity extends AppCompatActivity {
 
         ApiService service = RetroClient.getRetrofitInstance().create(ApiService.class);
         Call<List<StudentPojo>> call = service.getstudents();
+
+
         call.enqueue(new Callback<List<StudentPojo>>() {
             @Override
             public void onResponse(Call<List<StudentPojo>> call, Response<List<StudentPojo>> response) {

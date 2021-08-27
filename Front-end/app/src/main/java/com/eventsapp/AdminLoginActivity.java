@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eventsapp.api.ApiService;
@@ -18,11 +19,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdminLoginActivity extends AppCompatActivity {
+public class AdminLoginActivity extends BaseActivity {
 
     Button btnadminlogin;
     EditText etadminemail,etadminpass;
     ProgressDialog progress;
+    TextView tvEng,tvFr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,22 @@ public class AdminLoginActivity extends AppCompatActivity {
         etadminpass=(EditText)findViewById(R.id.etadminpass);
         etadminemail=(EditText)findViewById(R.id.etadminemail);
 
+        tvEng = (TextView) findViewById(R.id.tvEng);
+        tvFr = (TextView) findViewById(R.id.tvFr);
+        tvEng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("en");
+                restartActivity();
+            }
+        });
+        tvFr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocale("fr");
+                restartActivity();
+            }
+        });
         btnadminlogin=(Button)findViewById(R.id.btnadminlogin);
         btnadminlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +69,12 @@ public class AdminLoginActivity extends AppCompatActivity {
                     progress.show();
                     // api call code
                     ApiService apiService = RetroClient.getRetrofitInstance().create(ApiService.class);
+
                     Call<ResponseData> call = apiService.adminlogin(etadminemail.getText().toString(),etadminpass.getText().toString());
+
+
+
+
                     call.enqueue(new Callback<ResponseData>() {
                         @Override
                         public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
@@ -72,7 +95,10 @@ public class AdminLoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
+    }
+    private void restartActivity() {
+        Intent intent = getIntent();
+        startActivity(intent);
+        finish();
     }
 }
