@@ -87,4 +87,4 @@ public class TeacherForgotPasswordActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-}}
+}
